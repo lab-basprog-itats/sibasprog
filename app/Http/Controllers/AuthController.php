@@ -27,16 +27,34 @@ class AuthController extends Controller
      * Get a JWT via given credentials.
      *
      * @return JsonResponse
+     * @throws ValidationException
      */
-    public function authAdmin()
+    public function authAdmin(Request $request)
     {
-        $credentials = request(['email', 'password']);
-
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        $validator = Validator::make($request->only(['username', 'password']), [
+            'username' => 'required|string',
+            'password' => 'required|string|min:6'
+        ]);
+        if ($validator->fails()) {
+            return Response::json([
+                'message' => 'Format data yang diberikan tidak tepat!'
+            ], 400);
         }
 
-        return $this->respondWithToken($token);
+        if (!$token = auth('admin')->attempt($validator->validated())) {
+            return Response::json([
+                'message' => 'Autentikasi gagal!'
+            ], 401);
+        }
+
+        return Response::json([
+            'message' => 'Autentikasi berhasil! Selamat datang..',
+            'data' => [
+                'accessToken' => $token,
+                'tokenType' => 'bearer',
+                'expiresIn' => auth('admin')->factory()->getTTL() * 120
+            ]
+        ]);
     }
 
     /**
