@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
-
-class Admin extends Authenticatable implements JWTSubject
+class Praktikan extends Authenticatable implements JWTSubject
 {
     use HasFactory;
-
-    protected $table = 'admin';
+    protected $table = 'praktikan';
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
 
