@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'admin'
+        ],
+        'aslab' => [
+            'driver' => 'jwt',
+            'provider' => 'aslab'
+        ],
+        'praktikan' => [
+            'driver' => 'jwt',
+            'provider' => 'praktikan'
+        ]
     ],
 
     /*
@@ -64,6 +76,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Admin::class
+        ],
+        'aslab' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Aslab::class
+        ],
+        'praktikan' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Praktikan::class
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
