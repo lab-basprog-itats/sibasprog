@@ -1,9 +1,15 @@
 const Test = () => {
     return (
         <>
-            <h1 className="text-center text-red-500 font-bold text-sm">
-                HELLO
-            </h1>
+            <div>
+                <h2>Login Aslab</h2>
+                <form action="">
+                    <label htmlFor="">
+                        Username :
+                        <input type="text" />
+                    </label>
+                </form>
+            </div>
         </>
     )
 };
