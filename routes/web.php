@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AslabController;
 use App\Models\Aslab;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -51,6 +53,8 @@ Route::get('/tests', function (){
  * User yang sudah terautentikasi akan diarahkan ke route /dashboard
  */
 Route::middleware('guest')->group(function (){
+    // Route::get('/login-aslab',[AslabController::class, 'index'])->name('aslab.login');
+    // Route::post('/login-aslab',[AslabController::class, 'store']);
     Route::get('/shadow', function (){
         return Inertia::render('LoginAdmin');
     });

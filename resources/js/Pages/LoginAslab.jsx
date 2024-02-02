@@ -1,37 +1,51 @@
-import { InertiaLink } from '@inertiajs/inertia-react';
+import React from 'react';
+import { Inertia } from '@inertiajs/inertia';
+import Header from '../components/Header.jsx';
 
 const LoginAslab = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const npm = e.target.elements.npm.value;
+    const password = e.target.elements.password.value;
+
+    try {
+      await Inertia.post('/login-aslab', { npm, password });
+      Inertia.visit('/dashboard');
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
+
   return (
-    <div className="bg-blue-100 min-h-screen flex flex-col items-center justify-center">
-      <img src="../public/images/ITATS.png" alt="" className="mb-4 max-w-full" />
+    <Header>
       <h2 className="text-2xl font-sans mb-6 sm:mb-16">Login Aslab</h2>
-      <div className="max-w-md w-full p-10 bg-gray-100 rounded-lg shadow-md">
-        <form className="space-y-4">
-          <div>
-            <label className="block mb-1">NPM</label>
-            <input
-              type="text"
-              className="w-full p-2 border rounded-md"
-              placeholder="Enter your username"
-            />
-          </div>
-          <div>
-            <label className="block mb-1">Password</label>
-            <input
-              type="password"
-              className="w-full p-2 border rounded-md"
-              placeholder="Enter your password"
-            />
-          </div>
-          <button
-            type="button"
-            className="w-full bg-blue-950 text-white p-2 rounded-md hover:bg-green-600 transition duration-300"
-          >
-            Login
-          </button>
-        </form>
-      </div>
-    </div>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <div>
+          <label className="block mb-1">NPM</label>
+          <input
+            type="text"
+            name="npm"
+            className="w-full p-2 border rounded-md"
+            placeholder="Enter your NPM"
+          />
+        </div>
+        <div>
+          <label className="block mb-1">Password</label>
+          <input
+            type="password"
+            name="password"
+            className="w-full p-2 border rounded-md"
+            placeholder="Enter your password"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-950 text-white p-2 rounded-md hover:bg-blue-900 transition duration-300"
+        >
+          Login
+        </button>
+      </form>
+    </Header>
   );
 };
 
