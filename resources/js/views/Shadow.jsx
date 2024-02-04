@@ -21,7 +21,7 @@
 
 import React from "react";
 import Header from "../Pages/components/header";
-import Sidebar from "../Pages/components/sidebar";
+import Sidebar from "../components/Sidebar";
 import Footer from "../Pages/components/footer";
 
 function Dashboard() {
