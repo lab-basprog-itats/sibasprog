@@ -29,7 +29,7 @@ function Dashboard() {
         <div className="flex">
             <Sidebar />
             <div className="container mx-auto flex-1 p-5">
-                <div className="bg-gray-200 text-gray-800 p-5">
+                <div className="p-5 bg-teal-500 text-black">
                     <Header />
                 </div>
                 <main className="p-5">

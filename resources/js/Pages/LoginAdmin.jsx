@@ -1,4 +1,6 @@
-import { InertiaLink } from "@inertiajs/inertia-react";
+import React from "react";
+import { Inertia } from "@inertiajs/inertia-react";
+import Header from "../components/Header.jsx";
 
 const LoginAdmin = () => {
     const handleSubmit = async (e) => {
@@ -13,6 +15,7 @@ const LoginAdmin = () => {
             console.error("Login failed:", error);
         }
     };
+
     return (
         <Header>
             <h2 className="text-2xl font-sans mb-6 sm:mb-16 capitalize">

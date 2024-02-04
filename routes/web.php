@@ -58,6 +58,9 @@ Route::middleware('guest')->group(function (){
     Route::get('/shadow', function (){
         return Inertia::render('LoginAdmin');
     });
+    Route::get('/login-admin', function (){
+        return Inertia::render('LoginAdmin');
+    })->name('admin.login');
     Route::get('/login-aslab', function (){
         return Inertia::render('LoginAslab');
     })->name('aslab.login');
