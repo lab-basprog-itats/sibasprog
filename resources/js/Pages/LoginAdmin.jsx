@@ -10,7 +10,7 @@ const LoginAdmin = () => {
 
         try {
             await Inertia.post("/login-admin", { username, password });
-            Inertia.visit("/resources/js/views/DashboardAdmin.jsx");
+            Inertia.visit("/shadow");
         } catch (error) {
             console.error("Login failed:", error);
         }
