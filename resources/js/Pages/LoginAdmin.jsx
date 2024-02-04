@@ -1,47 +1,50 @@
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 const LoginAdmin = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const username = e.target.elements.username.value;
+        const password = e.target.elements.password.value;
+
+        try {
+            await Inertia.post("/login-admin", { username, password });
+            Inertia.visit("/resources/js/views/DashboardAdmin.jsx");
+        } catch (error) {
+            console.error("Login failed:", error);
+        }
+    };
     return (
-        <div className="bg-blue-100 min-h-screen flex flex-col items-center justify-center">
-            <img
-                src="../public/images/ITATS.png"
-                alt=""
-                className="mb-4 max-w-full"
-            />
+        <Header>
             <h2 className="text-2xl font-sans mb-6 sm:mb-16 capitalize">
                 login admin
             </h2>
-            <div className="max-w-md w-full p-10 bg-gray-100 rounded-lg shadow-md">
-                <form className="space-y-4">
-                    <div>
-                        <label className="block mb-1 capitalize">
-                            username
-                        </label>
-                        <input
-                            type="text"
-                            className="w-full p-2 border rounded-md"
-                            placeholder="Enter your username"
-                        />
-                    </div>
-                    <div>
-                        <label className="block mb-1 capitalize">
-                            password
-                        </label>
-                        <input
-                            type="password"
-                            className="w-full p-2 border rounded-md"
-                            placeholder="Enter your password"
-                        />
-                    </div>
-                    <button
-                        type="button"
-                        className="w-full bg-blue-950 text-white p-2 rounded-md hover:bg-green-600 transition duration-300"
-                    >
-                        Login
-                    </button>
-                </form>
-            </div>
-        </div>
+            <form className="space-y-4" onSubmit={handleSubmit}>
+                <div>
+                    <label className="block mb-1 capitalize">username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        className="w-full p-2 border rounded-md"
+                        placeholder="enter username"
+                    />
+                </div>
+                <div>
+                    <label className="block mb-1 capitalize">password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        className="w-full p-2 border rounded-md"
+                        placeholder="Enter password"
+                    />
+                </div>
+                <button
+                    type="submit"
+                    className="w-full bg-blue-950 text-white p-2 rounded-md hover:bg-blue-900 transition duration-300 capitalize"
+                >
+                    login
+                </button>
+            </form>
+        </Header>
     );
 };
 

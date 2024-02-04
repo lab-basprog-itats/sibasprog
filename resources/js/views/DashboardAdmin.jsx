@@ -20,9 +20,9 @@
 // export default Dashboard;
 
 import React from "react";
-import Header from "./components/header";
-import Sidebar from "./components/sidebar";
-import Footer from "./components/footer";
+import Header from "../Pages/components/header";
+import Sidebar from "../Pages/components/sidebar";
+import Footer from "../Pages/components/footer";
 
 function Dashboard() {
     return (
