@@ -11,11 +11,10 @@ class AslabController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Inertia\Response
+    public function index() 
     {
-        return Inertia::render('Test');
+        return Inertia::render('LoginAslab');
     }
-
     /**
      * Show the form for creating a new resource.
      */
