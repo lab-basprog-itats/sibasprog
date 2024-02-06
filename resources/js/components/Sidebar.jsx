@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CubeTransparentIcon } from '@heroicons/react/24/solid'; 
+import { InertiaLink } from '@inertiajs/inertia-react'; 
 
 const Sidebar = ({ menuOptions }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -18,7 +19,7 @@ const Sidebar = ({ menuOptions }) => {
         {menuOptions.map((option, index) => (
           <li key={index} className="py-2 flex items-center">
             <CubeTransparentIcon className="h-5 w-5 mr-2" />
-            <a href="#">{option}</a>
+            <InertiaLink href="#">{option}</InertiaLink> {/* InertiaLink */}
           </li>
         ))}
       </ul>
