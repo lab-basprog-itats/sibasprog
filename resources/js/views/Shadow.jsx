@@ -108,7 +108,7 @@ function Sidebar() {
     );
 }
 
-function ASLABPage() {
+function AdminPage() {
     return (
         <div className="container mx-auto p-4">
             <div className="flex mb-4">
@@ -129,4 +129,4 @@ function ASLABPage() {
     );
 }
 
-export default ASLABPage;
+export default AdminPage;
