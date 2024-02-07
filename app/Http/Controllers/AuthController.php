@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -118,12 +119,7 @@ class AuthController extends Controller
             ]
         ]);
     }
-
-    /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return JsonResponse
-     */
+  
     public function logoutAdmin(): JsonResponse
     {
         auth('admin')->logout();
@@ -164,6 +160,31 @@ class AuthController extends Controller
                 'tokenType' => 'bearer',
                 'expiresIn' => auth()->factory()->getTTL() * 120
             ]
+        ]);
+    }
+    public function getToken($guard, Request $request)
+    {
+        $guardList = ['admin', 'aslab', 'praktikan'];
+        if (!$guard) {
+            $request->user('praktikan')->tokens()->delete();
+            $token = $request->user('praktikan')->createToken('auth_token');
+            return Response::json([
+                'message' => 'Token berhasil didapatkan!',
+                'data' => $token->plainTextToken
+            ]);
+        }
+
+        if (!Arr::has($guardList, $guard)) {
+            return Response::json([
+                'message' => 'Request token tidak valid!'
+            ], 400);
+        }
+
+        $request->user($guard)->tokens()->delete();
+        $token = $request->user($guard)->createToken('auth_token');
+        return Response::json([
+            'message' => 'Token berhasil didapatkan!',
+            'data' => $token->plainTextToken
         ]);
     }
 }
