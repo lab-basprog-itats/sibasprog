@@ -16,12 +16,22 @@ const Sidebar = ({ menuOptions }) => {
         <h2 className="text-lg font-bold">ASLAB PAGE</h2>
       </div>
       <ul>
-        {menuOptions.map((option, index) => (
-          <li key={index} className="py-2 flex items-center">
-            <CubeTransparentIcon className="h-5 w-5 mr-2" />
-            <InertiaLink href="#">{option}</InertiaLink> {/* InertiaLink */}
-          </li>
-        ))}
+      {menuOptions.map((option, index) => (
+        <li key={index} className="py-2 flex items-center">
+          <CubeTransparentIcon className="h-5 w-5 mr-2" />
+          {option === 'List Praktikan' ? (
+            <InertiaLink href="/listpraktikan">{option}</InertiaLink>
+          ) : option === 'Entry Nilai' ? (
+            <InertiaLink href="/entrynilai">{option}</InertiaLink>
+          ) : option === 'Entry Pelanggaran' ? (
+            <InertiaLink href="/entrypelanggaran">{option}</InertiaLink>
+          ) : option === 'Unduh Nilai' ? (
+            <InertiaLink href="/unduhnilai">{option}</InertiaLink>
+          ) : (
+            <span>{option}</span>
+          )}
+        </li>
+      ))}
       </ul>
       <button className="absolute bottom-4 left-4 text-blue-700" onClick={toggleSidebar}>
         {isSidebarOpen ? 'Close' : 'Open'}

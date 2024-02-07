@@ -56,9 +56,6 @@ Route::middleware('guest')->group(function (){
     Route::get('/shadow', function (){
         return Inertia::render('LoginAdmin');
     });
-    Route::get('/dashboard', function (){
-        return Inertia::render('Dashboard');
-    })->name('aslab.dashboard');
     Route::get('/login-admin', function (){
         return Inertia::render('LoginAdmin');
     })->name('admin.login');
@@ -68,6 +65,14 @@ Route::middleware('guest')->group(function (){
     Route::get('/login', function (){
         return Inertia::render('LoginPraktikan');
     })->name('praktikan.login');
+
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    });
+    Route::get('/listpraktikan', function () {
+        return Inertia::render('ListPraktikan');
+    });
+
 });
 
 /** Routes Page TESTING Autentikasi

@@ -13,7 +13,7 @@ const Dashboard = () => {
       <div className="flex-grow text-blue-700">
         <Header> 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"> 
-            <InertiaLink href="/dashboard" className="bg-white rounded-md shadow-md p-6 flex items-center space-x-4">
+            <InertiaLink href="/listpraktikan" className="bg-white rounded-md shadow-md p-6 flex items-center space-x-4">
               <CubeTransparentIcon className="h-6 w-6" />
               <div>
                 <p className='text-3xl size-10'>10</p>
