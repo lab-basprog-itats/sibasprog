@@ -41,15 +41,15 @@ return [
             'provider' => 'users',
         ],
         'admin' => [
-            'driver' => 'session',
+            'driver' => 'jwt',
             'provider' => 'admin'
         ],
         'aslab' => [
-            'driver' => 'session',
+            'driver' => 'jwt',
             'provider' => 'aslab'
         ],
         'praktikan' => [
-            'driver' => 'session',
+            'driver' => 'jwt',
             'provider' => 'praktikan'
         ]
     ],

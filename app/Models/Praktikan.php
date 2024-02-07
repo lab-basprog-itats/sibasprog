@@ -2,51 +2,33 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Laravel\Sanctum\HasApiTokens;
-
-class Praktikan extends Model implements Authenticatable
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+class Praktikan extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory;
+    use HasFactory;
     protected $table = 'praktikan';
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
 
-    public function getAuthIdentifierName()
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
     {
-        // TODO: Implement getAuthIdentifierName() method.
-        return 'id';
-    }
-
-    public function getAuthIdentifier()
-    {
-        // TODO: Implement getAuthIdentifier() method.
         return $this->getKey();
     }
 
-    public function getAuthPassword()
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
     {
-        // TODO: Implement getAuthPassword() method.
-        return $this->password;
-    }
-
-    public function getRememberToken()
-    {
-        // TODO: Implement getRememberToken() method.
-        return $this->remember_token;
-    }
-
-    public function setRememberToken($value)
-    {
-        // TODO: Implement setRememberToken() method.
-        $this->remember_token = $value;
-    }
-
-    public function getRememberTokenName()
-    {
-        // TODO: Implement getRememberTokenName() method.
-        return 'remember_token';
+        return [];
     }
 }
