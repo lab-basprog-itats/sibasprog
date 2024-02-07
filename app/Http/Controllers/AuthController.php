@@ -11,6 +11,11 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware(
@@ -18,43 +23,38 @@ class AuthController extends Controller
             ['except' => ['authAdmin', 'authAslab', 'authPraktikan']]
         );
     }
-    private array $npmPasswordAttribute = [
-        'npm' => 'NPM',
-        'password' => 'Password'
-    ];
-    private array $usernamePasswordAttribute = [
-    'username' => 'Username',
-    'password' => 'Password'
-    ];
 
     /**
+     * Get a JWT via given credentials.
+     *
+     * @return JsonResponse
      * @throws ValidationException
      */
-    public function authAdmin(Request $request): JsonResponse
+    public function authAdmin(Request $request)
     {
-        $requestValidator = Validator::make($request->only(['username', 'password']), [
-            'username' => 'required|string|min:6',
+        $validator = Validator::make($request->only(['username', 'password']), [
+            'username' => 'required|string',
             'password' => 'required|string|min:6'
-        ], [
-            'required' => ':attribute tidak boleh kosong!',
-            'min' => 'Panjang minimal :attribute adalah :min'
-        ], $this->usernamePasswordAttribute);
-        if ($requestValidator->fails()) {
+        ]);
+        if ($validator->fails()) {
             return Response::json([
-                'message' => $requestValidator->messages()->first()
+                'message' => 'Format data yang diberikan tidak tepat!'
             ], 400);
         }
 
-        $validatedData = $requestValidator->validated();
-        if (!Auth::guard('admin')->attempt($validatedData)) {
+        if (!$token = auth('admin')->attempt($validator->validated())) {
             return Response::json([
-                'message' => 'Autentikasi gagal! Username atau Password Salah',
+                'message' => 'Autentikasi gagal!'
             ], 401);
         }
 
-        $request->session()->regenerate();
         return Response::json([
             'message' => 'Autentikasi berhasil! Selamat datang..',
+            'data' => [
+                'accessToken' => $token,
+                'tokenType' => 'bearer',
+                'expiresIn' => auth('admin')->factory()->getTTL() * 120
+            ]
         ]);
     }
 
@@ -63,30 +63,29 @@ class AuthController extends Controller
      */
     public function authAslab(Request $request): JsonResponse
     {
-        $requestValidator = Validator::make($request->only(['npm', 'password']), [
-            'npm' => 'required|string|min:12|regex:/^[0-9]+$/',
+        $validator = Validator::make($request->only(['npm', 'password']), [
+            'npm' => 'required|string|min:10',
             'password' => 'required|string|min:6'
-        ], [
-            'required' => ':attribute tidak boleh kosong!',
-            'regex' => ':attribute berupa angka tanpa titik (.)',
-            'min' => 'Panjang minimal :attribute adalah :min'
-        ], $this->npmPasswordAttribute);
-        if ($requestValidator->fails()) {
+        ]);
+        if ($validator->fails()) {
             return Response::json([
-                'message' => $requestValidator->messages()->first()
+                'message' => 'Format data yang diberikan tidak tepat!'
             ], 400);
         }
 
-        $validatedData = $requestValidator->validated();
-        if (!Auth::guard('aslab')->attempt($validatedData)) {
+        if (!$token = auth('aslab')->attempt($validator->validated())) {
             return Response::json([
-                'message' => 'Autentikasi gagal! NPM atau Password Salah',
+                'message' => 'Autentikasi gagal! NPM atau Password salah..'
             ], 401);
         }
 
-        $request->session()->regenerate();
         return Response::json([
             'message' => 'Autentikasi berhasil! Selamat datang..',
+            'data' => [
+                'accessToken' => $token,
+                'tokenType' => 'bearer',
+                'expiresIn' => auth('aslab')->factory()->getTTL() * 120
+            ]
         ]);
     }
 
@@ -95,38 +94,72 @@ class AuthController extends Controller
      */
     public function authPraktikan(Request $request): JsonResponse
     {
-        $requestValidator = Validator::make($request->only(['npm', 'password']), [
-            'npm' => 'required|string|min:12|regex:/^[0-9]+$/',
+        $validator = Validator::make($request->only(['npm', 'password']), [
+            'npm' => 'required|string|min:10',
             'password' => 'required|string|min:6'
-        ], [
-            'required' => ':attribute tidak boleh kosong!',
-            'regex' => ':attribute berupa angka tanpa titik (.)',
-            'min' => 'Panjang minimal :attribute adalah :min'
-        ], $this->npmPasswordAttribute);
-        if ($requestValidator->fails()) {
+        ]);
+        if ($validator->fails()) {
             return Response::json([
-                'message' => $requestValidator->messages()->first()
+                'message' => 'Format data yang diberikan tidak tepat!'
             ], 400);
         }
 
-        $validatedData = $requestValidator->validated();
-        if (!Auth::guard('praktikan')->attempt($validatedData)) {
+        if (!$token = auth('praktikan')->attempt($validator->validated())) {
             return Response::json([
-                'message' => 'Autentikasi gagal! NPM atau Password Salah',
+                'message' => 'Autentikasi gagal! NPM atau Password salah..'
             ], 401);
         }
 
-        $request->session()->regenerate();
         return Response::json([
             'message' => 'Autentikasi berhasil! Selamat datang..',
+            'data' => [
+                'accessToken' => $token,
+                'tokenType' => 'bearer',
+                'expiresIn' => auth('praktikan')->factory()->getTTL() * 120
+            ]
         ]);
     }
-    public function logout(Request $request): JsonResponse
+  
+    public function logoutAdmin(): JsonResponse
     {
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        auth('admin')->logout();
+
+        return Response::json((['message' => 'Berhasil logout!']));
+    }
+    public function logoutAslab(): JsonResponse
+    {
+        auth('aslab')->logout();
+
+        return Response::json((['message' => 'Berhasil logout!']));
+    }
+    public function logoutPraktikan(): JsonResponse
+    {
+        auth('praktikan')->logout();
+
+        return Response::json((['message' => 'Berhasil logout!']));
+    }
+
+    /**
+     * Refresh a token.
+     *
+     * @return JsonResponse
+     */
+    public function refresh($guard = null): JsonResponse
+    {
+        $availableGuard = ['admin', 'aslab', 'praktikan'];
+        if (!$guard) {
+            $guard = 'praktikan';
+        } elseif (!Arr::has($availableGuard, $guard)) {
+            abort(404);
+        }
+        $refreshToken = auth($guard)->refresh();
         return Response::json([
-            'message' => 'Logout berhasil! Sampai jumpa'
+            'message' => 'Refresh token berhasil!',
+            'data' => [
+                'accessToken' => $refreshToken,
+                'tokenType' => 'bearer',
+                'expiresIn' => auth()->factory()->getTTL() * 120
+            ]
         ]);
     }
     public function getToken($guard, Request $request)
