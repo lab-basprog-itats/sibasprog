@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\PraktikumPraktikan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
             LaboratoriumSeeder::class,
             AslabSeeder::class,
             PraktikanSeeder::class,
+            PraktikumSeeder::class,
             PraktikumPraktikanSeeder::class
         ]);
     }
