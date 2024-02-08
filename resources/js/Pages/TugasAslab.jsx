@@ -40,14 +40,14 @@ const DashboardAslab = () => {
     formData.append('catatan', catatan);
     formData.append('file', file);
 
-    // Kirim data menggunakan Inertia
     Inertia.post('/submit-task', formData);
     
     // Reset state setelah pengiriman
-    setKodeSoal('');
-    setModul('');
-    setCatatan('');
-    setFile(null);
+    setTaskName('');
+    setTaskFile(null);
+    setTaskDescription('');
+    setTaskType('');
+    setTaskDeadline('');
   };
 
   const adminMenuOptions = ['Dashboard', 'List Praktikan', 'Tugas Asistensi', 'Entry Pelanggaran', 'Unduh Nilai']; 
@@ -101,7 +101,8 @@ const DashboardAslab = () => {
                 onChange={handleChange}
                 required
                 className="mt-3 p-2 w-full border border-gray-300 rounded-md"
-              />
+                inputProps={{ style: { width: "100%" } }} // Menentukan lebar input
+                />
             </div>
             <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Tambah Tugas
