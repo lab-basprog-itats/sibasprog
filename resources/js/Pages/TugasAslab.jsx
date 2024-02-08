@@ -45,10 +45,8 @@ const DashboardAslab = () => {
     formData.append('taskType', taskType);
     formData.append('taskDeadline', taskDeadline);
 
-    // Kirim data menggunakan Inertia
     Inertia.post('/submit-task', formData);
     
-    // Reset state setelah pengiriman
     setTaskName('');
     setTaskFile(null);
     setTaskDescription('');
@@ -119,7 +117,7 @@ const DashboardAslab = () => {
                 value={taskDeadline}
                 onChange={(date) => setTaskDeadline(date)}
                 className="mt-3 p-2 w-full border border-gray-300 rounded-md"
-                inputProps={{ style: { width: "100%" } }} // Menentukan lebar input
+                inputProps={{ style: { width: "100%" } }} 
                 />
             </div>
             <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
