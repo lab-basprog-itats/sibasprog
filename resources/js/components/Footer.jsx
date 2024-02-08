@@ -1,9 +1,12 @@
 import React from 'react';
+import { Typography } from "@material-tailwind/react";
 
 const Footer = () => {
   return (
-    <footer className="mt-8 text-center text-gray-500">
-      <p>&copy; 2024 Your Company. All rights reserved.</p>
+    <footer className="w-full bg-white p-1"> 
+      <Typography color="blue-gray" className="text-center font-normal">
+        COPYRIGHT &copy; 2024. DESIGN BY LAB BAHASA PEMROGRAMAN
+      </Typography>
     </footer>
   );
 };

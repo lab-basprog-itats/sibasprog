@@ -19,7 +19,9 @@ const Sidebar = ({ menuOptions }) => {
       {menuOptions.map((option, index) => (
         <li key={index} className="py-2 flex items-center">
           <CubeTransparentIcon className="h-5 w-5 mr-2" />
-          {option === 'List Praktikan' ? (
+          { option === 'Dashboard' ? (
+            <InertiaLink href="/dashboard">{option}</InertiaLink>
+          ) : option === 'List Praktikan' ? (
             <InertiaLink href="/listpraktikan">{option}</InertiaLink>
           ) : option === 'Entry Nilai' ? (
             <InertiaLink href="/entrynilai">{option}</InertiaLink>

@@ -2,6 +2,7 @@ import React from 'react';
 import { CubeTransparentIcon } from '@heroicons/react/24/solid';
 import { InertiaLink } from '@inertiajs/inertia-react'; 
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Sidebar from '../components/SidebarAslab'; 
 
 const Dashboard = () => {
@@ -46,6 +47,7 @@ const Dashboard = () => {
             </InertiaLink>
           </div>
         </Header>
+        <Footer></Footer>
       </div>
     </div>
   );

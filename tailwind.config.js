@@ -1,13 +1,15 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+const mergedConfig = {
     content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.jsx",
-        "./resources/**/*.vue",
+      "./resources/**/*.blade.php",
+      "./resources/**/*.js",
+      "./resources/**/*.jsx",
+      "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+      extend: {},
     },
     plugins: [],
-}
+  };
+  
+  module.exports = mergedConfig;
+  
