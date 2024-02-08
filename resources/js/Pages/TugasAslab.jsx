@@ -7,29 +7,25 @@ import FooterAslab from '../components/FooterAslab';
 import SidebarAslab from '../components/SidebarAslab';
 
 const DashboardAslab = () => {
-  const [taskName, setTaskName] = useState('');
-  const [taskFile, setTaskFile] = useState(null);
-  const [taskDescription, setTaskDescription] = useState('');
-  const [taskType, setTaskType] = useState('');
-  const [taskDeadline, setTaskDeadline] = useState('');
+  const [kodeSoal, setKodeSoal] = useState('');
+  const [modul, setModul] = useState('');
+  const [catatan, setCatatan] = useState('');
+  const [file, setFile] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     switch (name) {
-      case 'taskName':
-        setTaskName(value);
+      case 'kodeSoal':
+        setKodeSoal(value);
         break;
-      case 'taskDescription':
-        setTaskDescription(value);
+      case 'modul':
+        setModul(value);
         break;
-      case 'taskType':
-        setTaskType(value);
+      case 'catatan':
+        setCatatan(value);
         break;
-      case 'taskDeadline':
-        setTaskDeadline(value);
-        break;
-      case 'taskFile':
-        setTaskFile(files[0]);
+      case 'file':
+        setFile(files[0]);
         break;
       default:
         break;
@@ -39,21 +35,19 @@ const DashboardAslab = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('taskName', taskName);
-    formData.append('taskFile', taskFile);
-    formData.append('taskDescription', taskDescription);
-    formData.append('taskType', taskType);
-    formData.append('taskDeadline', taskDeadline);
+    formData.append('kodeSoal', kodeSoal);
+    formData.append('modul', modul);
+    formData.append('catatan', catatan);
+    formData.append('file', file);
 
     // Kirim data menggunakan Inertia
     Inertia.post('/submit-task', formData);
     
     // Reset state setelah pengiriman
-    setTaskName('');
-    setTaskFile(null);
-    setTaskDescription('');
-    setTaskType('');
-    setTaskDeadline('');
+    setKodeSoal('');
+    setModul('');
+    setCatatan('');
+    setFile(null);
   };
 
   const adminMenuOptions = ['Dashboard', 'List Praktikan', 'Tugas Asistensi', 'Entry Pelanggaran', 'Unduh Nilai']; 
@@ -63,64 +57,51 @@ const DashboardAslab = () => {
       <SidebarAslab menuOptions={adminMenuOptions} />
       <div className="flex-grow text-blue-700">
         <HeaderAslab> 
-        <h2 className="text-xl font-bold mb-4">Tugas Aslab</h2>
+          <h2 className="text-xl font-bold mb-4">Tugas Aslab</h2>
           <form onSubmit={handleSubmit} className="p-4">
             <div className="mb-4">
-              <label htmlFor="taskName" className="block text-sm font-medium text-gray-700">Nama Tugas:</label>
+              <label htmlFor="kodeSoal" className="block text-sm font-medium text-gray-700">Kode Soal:</label>
               <input
                 type="text"
-                id="taskName"
-                name="taskName"
-                value={taskName}
+                id="kodeSoal"
+                name="kodeSoal"
+                value={kodeSoal}
                 onChange={handleChange}
                 className="mt-3 p-2 w-full border border-gray-300 rounded-md"
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="taskFile" className="block text-sm font-medium text-gray-700">File Tugas:</label>
+              <label htmlFor="modul" className="block text-sm font-medium text-gray-700">Modul:</label>
               <input
-                type="file"
-                id="taskFile"
-                name="taskFile"
+                type="text"
+                id="modul"
+                name="modul"
+                value={modul}
                 onChange={handleChange}
+                required
                 className="mt-3 p-2 w-full border border-gray-300 rounded-md"
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="taskDescription" className="block text-sm font-medium text-gray-700">Deskripsi:</label>
+              <label htmlFor="catatan" className="block text-sm font-medium text-gray-700">Catatan:</label>
               <textarea
-                id="taskDescription"
-                name="taskDescription"
-                value={taskDescription}
+                id="catatan"
+                name="catatan"
+                value={catatan}
                 onChange={handleChange}
                 className="mt-3 p-2 w-full border border-gray-300 rounded-md"
               ></textarea>
             </div>
             <div className="mb-4">
-              <label htmlFor="taskType" className="block text-sm font-medium text-gray-700">Jenis Tugas:</label>
-              <select
-                id="taskType"
-                name="taskType"
-                value={taskType}
+              <label htmlFor="file" className="block text-sm font-medium text-gray-700">File:</label>
+              <input
+                type="file"
+                id="file"
+                name="file"
                 onChange={handleChange}
+                required
                 className="mt-3 p-2 w-full border border-gray-300 rounded-md"
-              >
-                <option value="Modul 1">Modul 1</option>
-                <option value="Modul 2">Modul 2</option>
-                <option value="Modul 3">Modul 3</option>
-                <option value="Modul 4">Modul 4</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <label htmlFor="taskDeadline" className="block text-sm font-medium text-gray-700">Durasi Waktu Pengumpulan:</label>
-              <DateTime
-                id="taskDeadline"
-                name="taskDeadline"
-                value={taskDeadline}
-                onChange={(date) => setTaskDeadline(date)}
-                className="mt-3 p-2 w-full border border-gray-300 rounded-md"
-                inputProps={{ style: { width: "100%" } }} // Menentukan lebar input
-                />
+              />
             </div>
             <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Tambah Tugas
