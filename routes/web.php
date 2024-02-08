@@ -69,6 +69,9 @@ Route::middleware('guest')->group(function (){
     Route::get('/dashboard-aslab', function () {
         return Inertia::render('DashboardAslab');
     });
+    Route::get('/tugas-aslab', function (){
+        return Inertia::render('TugasAslab');
+    });
     Route::get('/listpraktikan', function () {
         return Inertia::render('ListPraktikan');
     });

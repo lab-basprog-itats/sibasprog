@@ -23,8 +23,8 @@ const SidebarAslab = ({ menuOptions }) => {
             <InertiaLink href="/dashboard-aslab">{option}</InertiaLink>
           ) : option === 'List Praktikan' ? (
             <InertiaLink href="/listpraktikan">{option}</InertiaLink>
-          ) : option === 'Entry Nilai' ? (
-            <InertiaLink href="/entrynilai">{option}</InertiaLink>
+          ) : option === 'Tugas Asistensi' ? (
+            <InertiaLink href="/tugas-aslab">{option}</InertiaLink>
           ) : option === 'Entry Pelanggaran' ? (
             <InertiaLink href="/entrypelanggaran">{option}</InertiaLink>
           ) : option === 'Unduh Nilai' ? (

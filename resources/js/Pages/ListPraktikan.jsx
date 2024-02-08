@@ -85,7 +85,7 @@ const ListPraktikan = () => {
     },
   ];
 
-  const adminMenuOptions = ['Dashboard', 'List Praktikan', 'Entry Nilai', 'Entry Pelanggaran', 'Unduh Nilai']; 
+  const adminMenuOptions = ['Dashboard', 'List Praktikan', 'Tugas Asistensi', 'Entry Pelanggaran', 'Unduh Nilai']; 
 
   const handleNextPage = () => {
     setCurrentPage(prevPage => prevPage + 1);
@@ -227,22 +227,8 @@ const ListPraktikan = () => {
       <SidebarAslab menuOptions={adminMenuOptions} />
       <div className="flex-grow text-blue-700">
         <HeaderAslab>
+        <h2 className="text-xl font-bold mb-4">Daftar Praktikan</h2>
           <Card className="h-full w-full overflow-scroll">
-            <div className="mb-8 flex items-center justify-between gap-8">
-              <div style={{ marginLeft: '10px' }}>
-                <Typography variant="h5" color="blue-gray">
-                  Daftar Praktikan
-                </Typography>
-                <Typography color="gray" className="mt-1 font-normal">
-                  Informasi
-                </Typography>
-              </div>
-              <div className="flex items-center gap-5">
-                <Button className='bg-blue-600' color="blue" ripple="light" size='sm'>
-                  Tambah Praktikan
-                </Button>
-              </div>
-            </div>
             <div className='overflow-x-auto' style={{ maxWidth: '100%' }}>
               <table className="w-full min-w-max table-auto text-left">
                 <thead>
