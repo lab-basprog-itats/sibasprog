@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Sidebar from '../components/SidebarAslab'; 
+import HeaderAslab from '../components/HeaderAslab';
+import FooterAslab from '../components/FooterAslab';
+import SidebarAslab from '../components/SidebarAslab';
 import { Card, Typography, Button } from "@material-tailwind/react";
 
 const TABLE_HEAD = ["Nama", "NPM", "Kelas", "Status", "Sesi", "Action"];
@@ -224,9 +224,9 @@ const ListPraktikan = () => {
 
   return (
     <div className="flex flex-col md:flex-row"> 
-      <Sidebar menuOptions={adminMenuOptions} />
+      <SidebarAslab menuOptions={adminMenuOptions} />
       <div className="flex-grow text-blue-700">
-        <Header>
+        <HeaderAslab>
           <Card className="h-full w-full overflow-scroll">
             <div className="mb-8 flex items-center justify-between gap-8">
               <div style={{ marginLeft: '10px' }}>
@@ -270,8 +270,8 @@ const ListPraktikan = () => {
             </div>
             {renderPaginationButtons()}
           </Card>
-        </Header>
-        <Footer />
+        </HeaderAslab>
+        <FooterAslab/>
       </div>
     </div>
   );

@@ -1,18 +1,18 @@
 import React from 'react';
 import { CubeTransparentIcon } from '@heroicons/react/24/solid';
 import { InertiaLink } from '@inertiajs/inertia-react'; 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Sidebar from '../components/SidebarAslab'; 
+import HeaderAslab from '../components/HeaderAslab';
+import FooterAslab from '../components/FooterAslab';
+import SidebarAslab from '../components/SidebarAslab';
 
-const Dashboard = () => {
+const DashboardAslab = () => {
   const adminMenuOptions = ['Dashboard', 'List Praktikan', 'Entry Nilai', 'Entry Pelanggaran', 'Unduh Nilai']; 
 
   return (
     <div className="flex flex-col md:flex-row"> 
-      <Sidebar menuOptions={adminMenuOptions} />
+      <SidebarAslab menuOptions={adminMenuOptions} />
       <div className="flex-grow text-blue-700">
-        <Header> 
+        <HeaderAslab> 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"> 
             <InertiaLink href="/listpraktikan" className="bg-white rounded-md shadow-md p-6 flex items-center space-x-4">
               <CubeTransparentIcon className="h-6 w-6" />
@@ -46,11 +46,11 @@ const Dashboard = () => {
               </div>
             </InertiaLink>
           </div>
-        </Header>
-        <Footer></Footer>
+        </HeaderAslab>
+        <FooterAslab></FooterAslab>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default DashboardAslab;

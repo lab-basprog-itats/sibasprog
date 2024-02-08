@@ -66,8 +66,8 @@ Route::middleware('guest')->group(function (){
         return Inertia::render('LoginPraktikan');
     })->name('praktikan.login');
 
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+    Route::get('/dashboard-aslab', function () {
+        return Inertia::render('DashboardAslab');
     });
     Route::get('/listpraktikan', function () {
         return Inertia::render('ListPraktikan');

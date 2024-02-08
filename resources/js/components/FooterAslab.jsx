@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from "@material-tailwind/react";
 
-const Footer = () => {
+const FooterAslab = () => {
   return (
     <footer className="w-full bg-white p-1"> 
       <Typography color="blue-gray" className="text-center font-normal">
@@ -11,4 +11,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterAslab;

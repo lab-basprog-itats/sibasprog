@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { InertiaLink } from '@inertiajs/inertia-react';
 
-const Header = ({ children }) => {
-  // State untuk mengontrol apakah menu profil ditampilkan atau tidak
+const HeaderAslab = ({ children }) => {
   const [isProfileMenuOpen, setProfileMenuOpen] = useState(false);
 
-  // Fungsi untuk menampilkan atau menyembunyikan menu profil
   const toggleProfileMenu = () => {
     setProfileMenuOpen(!isProfileMenuOpen);
   };
@@ -14,16 +12,13 @@ const Header = ({ children }) => {
     <div className="bg-blue-100 min-h-screen flex-col">
       <div className="flex items-center justify-between px-4 sm:px-10 py-1 bg-blue-900 shadow-md">
         <div className="h-12 sm:h-28 ml-auto">
-          {/* Opsi profil */}
           <div className="relative inline-block">
             <img
               alt="tania andrew"
               src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
               className="relative inline-block object-cover object-center w-12 h-12 rounded-full cursor-pointer"
-              // Menggunakan onClick untuk memanggil fungsi toggleProfileMenu saat gambar profil diklik
               onClick={toggleProfileMenu}
             />
-            {/* Menampilkan atau menyembunyikan menu profil berdasarkan nilai isProfileMenuOpen */}
             {isProfileMenuOpen && (
               <ul
                 role="menu"
@@ -89,4 +84,4 @@ const Header = ({ children }) => {
   );
 };
 
-export default Header;
+export default HeaderAslab;

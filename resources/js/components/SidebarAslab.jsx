@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CubeTransparentIcon } from '@heroicons/react/24/solid'; 
 import { InertiaLink } from '@inertiajs/inertia-react'; 
 
-const Sidebar = ({ menuOptions }) => {
+const SidebarAslab = ({ menuOptions }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSidebar = () => {
@@ -20,7 +20,7 @@ const Sidebar = ({ menuOptions }) => {
         <li key={index} className="py-2 flex items-center">
           <CubeTransparentIcon className="h-5 w-5 mr-2" />
           { option === 'Dashboard' ? (
-            <InertiaLink href="/dashboard">{option}</InertiaLink>
+            <InertiaLink href="/dashboard-aslab">{option}</InertiaLink>
           ) : option === 'List Praktikan' ? (
             <InertiaLink href="/listpraktikan">{option}</InertiaLink>
           ) : option === 'Entry Nilai' ? (
@@ -42,4 +42,4 @@ const Sidebar = ({ menuOptions }) => {
   );
 };
 
-export default Sidebar;
+export default SidebarAslab;
