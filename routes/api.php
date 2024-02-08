@@ -34,5 +34,5 @@ Route::middleware('auth:admin,aslab,praktikan')->group(function () {
      * Tidak perlu menyertakan segment setelah /refresh untuk route Refresh Token Praktikan
      */
     Route::post('/auth/refresh/{guard}', [AuthController::class, 'refresh']);
-
+    Route::get('/auth/get-token/{guard}', [AuthController::class, 'getToken']);
 });
