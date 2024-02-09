@@ -134,10 +134,10 @@ const ListPraktikan = () => {
       const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
       const renderModulStatus = (modul, modulName) => {
-        const bgColor = modul ? "bg-green-100" : "bg-yellow-200";
+        const bgColor = modul ? "bg-green-300" : "bg-yellow-300";
         return (
           <div>
-            <span className={`px-2 py-1 rounded-full text-xs font-medium ${bgColor} text-blue-gray-800`}>
+            <span className={`px-2 py-1 rounded-full text-xs font-medium ${bgColor} text-black`}>
               {modulName}
             </span><br/>
           </div>
@@ -212,7 +212,7 @@ const ListPraktikan = () => {
               href="#"
               variant="small"
               color="blue-gray"
-              className="font-medium bg-blue-200 px-7 py-1 rounded-full inline-block"
+              className="font-medium bg-blue-600 text-white px-7 py-1 rounded-full inline-block"
             >
               Edit
             </Typography>
@@ -236,7 +236,7 @@ const ListPraktikan = () => {
                     {TABLE_HEAD.map((head, index) => (
                       <th
                         key={index}
-                        className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                        className="border-b bg-white p-4"
                       >
                         <Typography
                           variant="small"

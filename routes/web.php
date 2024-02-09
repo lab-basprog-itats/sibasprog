@@ -75,6 +75,9 @@ Route::middleware('guest')->group(function (){
     Route::get('/listpraktikan', function () {
         return Inertia::render('ListPraktikan');
     });
+    Route::get('/profile-aslab', function () {
+        return Inertia::render('ProfileAslab');
+    });
 
 });
 
