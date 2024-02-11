@@ -1,9 +1,8 @@
 import React from "react";
-// import { CubeTransparentIcon } from "@heroicons/react/24/solid";
 import { InertiaLink } from "@inertiajs/inertia-react";
-import HeaderAslab from "../components/HeaderAdmin";
-import FooterAslab from "../components/FooterAdmin";
-import SidebarAslab from "../components/SidebarAdmin";
+import HeaderAdmin from "../components/HeaderAdmin";
+import FooterAdmin from "../components/FooterAdmin";
+import SidebarAdmin from "../components/SidebarAdmin";
 
 const DashboardAdmin = () => {
     const adminMenuOptions = [
@@ -24,9 +23,9 @@ const DashboardAdmin = () => {
 
     return (
         <div className="flex flex-col md:flex-row">
-            <SidebarAslab menuOptions={adminMenuOptions} />
+            <SidebarAdmin menuOptions={adminMenuOptions} />
             <div className="flex-grow text-blue-700">
-                <HeaderAslab>
+                <HeaderAdmin>
                     <h2 className="text-xl font-bold mb-4 capitalize">
                         dashboard admin
                     </h2>
@@ -214,8 +213,8 @@ const DashboardAdmin = () => {
                             </div>
                         </InertiaLink> */}
                     </div>
-                </HeaderAslab>
-                <FooterAslab></FooterAslab>
+                </HeaderAdmin>
+                <FooterAdmin></FooterAdmin>
             </div>
         </div>
     );
