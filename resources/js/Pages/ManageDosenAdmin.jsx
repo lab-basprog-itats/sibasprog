@@ -1,5 +1,5 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
-import HeaderAslab from "../components/HeaderAdmin";
-import FooterAslab from "../components/FooterAdmin";
-import SidebarAslab from "../components/SidebarAdmin";
+import HeaderAdmin from "../components/HeaderAdmin";
+import FooterAdmin from "../components/FooterAdmin";
+import SidebarAdmin from "../components/SidebarAdmin";
