@@ -52,8 +52,92 @@ Route::get('/tests', function (){
  */
 Route::middleware('guest')->group(function (){
     Route::get('/shadow', function (){
-        return Inertia::render('LoginAdmin');
+        return Inertia::render('DashboardAdmin');
     });
+    Route::get('/login-admin', function (){
+        return Inertia::render('LoginAdmin');
+    })->name('admin.login');
+    Route::get('/manage-dosen', function (){
+        return Inertia::render('ManageDosenAdmin');
+    });//->name('admin.manageDosen');
+    Route::get('/manage-aslab', function (){
+        return Inertia::render('ManageAslabAdmin');
+    });//->name('admin.manageAslab');
+    Route::get('/praktikum', function (){
+        return Inertia::render('PraktikumAdmin');
+    });//->name('admin.praktikum');
+    Route::get('/sesi-praktikum', function (){
+        return Inertia::render('SesiPraktikumAdmin');
+    });//->name('admin.sesiPraktikum');
+    Route::get('/periode-dosen', function (){
+        return Inertia::render('PeriodeDosenAdmin');
+    });//->name('admin.periodeDosen');
+    Route::get('/periode-aslab', function (){
+        return Inertia::render('PeriodeAslabAdmin');
+    });//->name('admin.periodeAslab');
+    Route::get('/modul-dosen', function (){
+        return Inertia::render('ModulDosenAdmin');
+    });//->name('admin.modulDosen');
+    Route::get('/modul-aslab', function (){
+        return Inertia::render('ModulAslabAdmin');
+    });//->name('admin.modulAslab');
+    Route::get('/penilaian-dosen', function (){
+        return Inertia::render('PenilaianDosenAdmin');
+    });//->name('admin.penilaianDosen');
+    Route::get('/penilaian-aslab', function (){
+        return Inertia::render('PenilaianAslabAdmin');
+    });//->name('admin.penilaianAslab');
+    Route::get('/manage-materi', function (){
+        return Inertia::render('ManageMateriAdmin');
+    });//->name('admin.manageMateri');
+    Route::get('/manage-pelanggaran', function (){
+        return Inertia::render('ManagePelanggaranAdmin');
+    });//->name('admin.pelanggaran');
+    Route::get('/list-praktikan', function (){
+        return Inertia::render('ListPraktikanAdmin');
+    });//->name('admin.daftarPraktikan');
+
+    // Route::get('/manage-dosen', function (){
+    //     return Inertia::render('manageDosen');
+    // })->name('admin.manageDosen');
+    // Route::get('/manageAslab', function (){
+    //     return Inertia::render('manageAslab');
+    // })->name('admin.manageAslab');
+    // Route::get('/praktikum', function (){
+    //     return Inertia::render('praktikum');
+    // })->name('admin.praktikum');
+    // Route::get('/sesiPraktikum', function (){
+    //     return Inertia::render('sesiPraktikum');
+    // })->name('admin.sesiPraktikum');
+    // Route::get('/periodeDosen', function (){
+    //     return Inertia::render('periodeDosen');
+    // })->name('admin.periodeDosen');
+    // Route::get('/periodeAslab', function (){
+    //     return Inertia::render('periodeAslab');
+    // })->name('admin.periodeAslab');
+    // Route::get('/modulDosen', function (){
+    //     return Inertia::render('modulDosen');
+    // })->name('admin.modulDosen');
+    // Route::get('/modulAslab', function (){
+    //     return Inertia::render('modulAslab');
+    // })->name('admin.modulAslab');
+    // Route::get('/penilaianDosen', function (){
+    //     return Inertia::render('penilaianDosen');
+    // })->name('admin.penilaianDosen');
+    // Route::get('/penilaianAslab', function (){
+    //     return Inertia::render('penilaianAslab');
+    // })->name('admin.penilaianAslab');
+    // Route::get('/manageMateri', function (){
+    //     return Inertia::render('manageMateri');
+    // })->name('admin.manageMateri');
+    // Route::get('/managePelanggaran', function (){
+    //     return Inertia::render('managePelanggaran');
+    // })->name('admin.pelanggaran');
+    // Route::get('/daftarPratikan', function (){
+    //     return Inertia::render('daftarPraktikan');
+    // })->name('admin.daftarPraktikan');
+
+
     Route::get('/login-aslab', function (){
         return Inertia::render('LoginAslab');
     })->name('aslab.login');
