@@ -1,11 +1,11 @@
 import React from "react";
-import { CubeTransparentIcon } from "@heroicons/react/24/solid";
+// import { CubeTransparentIcon } from "@heroicons/react/24/solid";
 import { InertiaLink } from "@inertiajs/inertia-react";
-import HeaderAslab from "../components/HeaderAslab";
-import FooterAslab from "../components/FooterAslab";
-import SidebarAslab from "../components/SidebarAslab";
+import HeaderAslab from "../components/HeaderAdmin";
+import FooterAslab from "../components/FooterAdmin";
+import SidebarAslab from "../components/SidebarAdmin";
 
-const DashboardAslab = () => {
+const DashboardAdmin = () => {
     const adminMenuOptions = [
         // "Dashboard Admin",
         // "List Praktikan",
