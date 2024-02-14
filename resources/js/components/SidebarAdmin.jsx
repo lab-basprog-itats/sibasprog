@@ -185,7 +185,7 @@ import React, { useState } from "react";
 import { CubeTransparentIcon } from "@heroicons/react/24/solid";
 import { InertiaLink } from "@inertiajs/inertia-react";
 
-const SidebarAdmin = ({ menuOptions }) => {
+const SidebarAdmin = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [dropdowns, setDropdowns] = useState({});
 
@@ -196,14 +196,89 @@ const SidebarAdmin = ({ menuOptions }) => {
         });
     };
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
-
+    // const menuOptions = [
+    //     {
+    //         label: "Dashboard",
+    //         href: "/shadow",
+    //     },
+    //     {
+    //         label: "Management User",
+    //         children: [
+    //             {
+    //                 label: "Dosen",
+    //                 href: "/manage-dosen",
+    //             },
+    //             {
+    //                 label: "Aslab",
+    //                 href: "/manage-aslab",
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         label: "Management Praktikum",
+    //         children: [
+    //             {
+    //                 label: "Praktikum",
+    //                 href: "/praktikum",
+    //             },
+    //             {
+    //                 label: "Sesi Praktikum",
+    //                 href: "/sesi-praktikum",
+    //             },
+    //             {
+    //                 label: "Dosen Aktif",
+    //                 href: "/dosen-aktif",
+    //             },
+    //             {
+    //                 label: "Aslab Aktif",
+    //                 href: "/aslab-aktif",
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         label: "Management Modul",
+    //         children: [
+    //             {
+    //                 label: "Modul Dosen",
+    //                 href: "/modul-dosen",
+    //             },
+    //             {
+    //                 label: "Modul Aslab",
+    //                 href: "/modul-aslab",
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         label: "Management Materi",
+    //         href: "/manage-materi",
+    //     },
+    //     {
+    //         label: "Management Penilaian",
+    //         children: [
+    //             {
+    //                 label: "Dosen",
+    //                 href: "/penilaian-dosen",
+    //             },
+    //             {
+    //                 label: "Aslab",
+    //                 href: "/penilaian-aslab",
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         label: "Management Pelanggaran",
+    //         href: "/manage-pelanggaran",
+    //     },
+    //     {
+    //         label: "Praktikan",
+    //         href: "/list-praktikan",
+    //     },
+    // ];
     const menuOptions = [
         {
             label: "Dashboard",
             href: "/shadow",
+            active: window.location.pathname === "/shadow",
         },
         {
             label: "Management User",
@@ -211,10 +286,14 @@ const SidebarAdmin = ({ menuOptions }) => {
                 {
                     label: "Dosen",
                     href: "/manage-dosen",
+                    active: window.location.pathname.startsWith(
+                        "/manage-dosen"
+                    ),
                 },
                 {
                     label: "Aslab",
                     href: "/manage-aslab",
+                    active: window.location.pathname === "/manage-aslab",
                 },
             ],
         },
@@ -224,18 +303,22 @@ const SidebarAdmin = ({ menuOptions }) => {
                 {
                     label: "Praktikum",
                     href: "/praktikum",
+                    active: window.location.pathname === "/praktikum",
                 },
                 {
                     label: "Sesi Praktikum",
                     href: "/sesi-praktikum",
+                    active: window.location.pathname === "/sesi-praktikum",
                 },
                 {
                     label: "Dosen Aktif",
                     href: "/dosen-aktif",
+                    active: window.location.pathname === "/dosen-aktif",
                 },
                 {
                     label: "Aslab Aktif",
                     href: "/aslab-aktif",
+                    active: window.location.pathname === "/aslab-aktif",
                 },
             ],
         },
@@ -245,16 +328,19 @@ const SidebarAdmin = ({ menuOptions }) => {
                 {
                     label: "Modul Dosen",
                     href: "/modul-dosen",
+                    active: window.location.pathname === "/modul-dosen",
                 },
                 {
                     label: "Modul Aslab",
                     href: "/modul-aslab",
+                    active: window.location.pathname === "/modul-aslab",
                 },
             ],
         },
         {
             label: "Management Materi",
             href: "/manage-materi",
+            active: window.location.pathname === "/manage-materi",
         },
         {
             label: "Management Penilaian",
@@ -262,22 +348,30 @@ const SidebarAdmin = ({ menuOptions }) => {
                 {
                     label: "Dosen",
                     href: "/penilaian-dosen",
+                    active: window.location.pathname === "/penilaian-dosen",
                 },
                 {
                     label: "Aslab",
                     href: "/penilaian-aslab",
+                    active: window.location.pathname === "/penilaian-aslab",
                 },
             ],
         },
         {
             label: "Management Pelanggaran",
             href: "/manage-pelanggaran",
+            active: window.location.pathname === "/manage-pelanggaran",
         },
         {
             label: "Praktikan",
             href: "/list-praktikan",
+            active: window.location.pathname === "/list-praktikan",
         },
     ];
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
 
     return (
         <aside
@@ -308,7 +402,8 @@ const SidebarAdmin = ({ menuOptions }) => {
                                                     href={child.href}
                                                     key={childIndex}
                                                 >
-                                                    <li className="capitalize">
+                                                    <li className="capitalize underline">
+                                                        <CubeTransparentIcon className="h-5 w-5 mr-2" />
                                                         {child.label}
                                                     </li>
                                                 </InertiaLink>
