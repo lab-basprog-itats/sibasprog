@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PraktikanController;
 use App\Models\Aslab;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -58,7 +59,7 @@ Route::middleware('guest')->group(function (){
         return Inertia::render('LoginAslab');
     })->name('aslab.login');
     Route::get('/login', function (){
-        return Inertia::render('LoginPraktikan');
+        return Inertia::render('PraktikanLoginPage');
     })->name('praktikan.login');
 });
 
@@ -71,6 +72,7 @@ Route::middleware('auth:admin')->get('/tes-admin', function (){
 Route::middleware('auth:aslab')->get('/tes-aslab', function (){
     return Inertia::render('Test');
 });
-Route::middleware('auth:praktikan')->get('/tes-praktikan', function (){
-    return Inertia::render('Test');
+Route::middleware('auth:praktikan')->prefix('praktikan')->group(function () {
+    Route::get('dashboard', [PraktikanController::class, 'dashboardPage']);
+    Route::get('praktikum', [PraktikanController::class, 'praktikumPage']);
 });

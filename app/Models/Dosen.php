@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 
-class Aslab extends Model implements Authenticatable
+class Dosen extends Model
 {
     use HasApiTokens, HasFactory;
-    protected $table = 'aslab';
+    protected $table = 'dosen';
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
 

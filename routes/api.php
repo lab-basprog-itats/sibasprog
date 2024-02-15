@@ -24,10 +24,7 @@ Route::post('/auth/login-aslab', [AuthController::class, 'authAslab']);
 Route::post('/auth/login', [AuthController::class, 'authPraktikan']);
 
 Route::middleware('auth:admin,aslab,praktikan')->group(function () {
-    Route::post('/auth/logout-admin', [AuthController::class, 'logoutAdmin'])->middleware('auth:admin');
-    Route::post('/auth/logout-aslab', [AuthController::class, 'logoutAslab'])->middleware('auth:aslab');
-    Route::post('/auth/logout', [AuthController::class, 'logoutPraktikan'])->middleware('auth:praktikan');
-
+    Route::post('/auth/logout', [AuthController::class, 'logout']);
     /**
      * Route untuk Refresh Token.
      * Url yang diterima /auth/refresh/admin, /auth/refresh/aslab, /auth/refresh

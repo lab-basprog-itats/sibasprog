@@ -14,6 +14,14 @@ class Praktikan extends Model implements Authenticatable
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
 
+    public function Praktikum()
+    {
+        return $this->hasMany(PraktikumPraktikan::class, 'praktikan_id', 'id');
+    }
+    public function JawabanAsistensi()
+    {
+        return $this->hasMany(JawabanAsistensi::class, 'praktikan_id', '');
+    }
     public function getAuthIdentifierName()
     {
         // TODO: Implement getAuthIdentifierName() method.
