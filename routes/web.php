@@ -61,41 +61,71 @@ Route::middleware('guest')->group(function (){
     Route::get('/login-admin', function (){
         return Inertia::render('LoginAdmin');
     })->name('admin.login');
-    Route::get('/manage-dosen', function (){
-        return Inertia::render('ManageDosenAdmin');
+    Route::get('/preview-dosen', function (){
+        return Inertia::render('ManageDosenPreviewAdmin');
     });//->name('admin.manageDosen');
-    Route::get('/manage-aslab', function (){
-        return Inertia::render('ManageAslabAdmin');
-    });//->name('admin.manageAslab');
-    Route::get('/praktikum', function (){
-        return Inertia::render('PraktikumAdmin');
+    Route::get('/register-dosen', function (){
+        return Inertia::render('ManageDosenRegisterAdmin');
+    });//->name('admin.manageDosen');
+    Route::get('/preview-aslab', function (){
+        return Inertia::render('ManageAslabPreviewAdmin');
+    });//->name('admin.manageDosen');
+    Route::get('/register-aslab', function (){
+        return Inertia::render('ManageAslabRegisterAdmin');
+    });//->name('admin.manageDosen');
+    Route::get('/register-periode-praktikum', function (){
+        return Inertia::render('PraktikumManageAdmin');
     });//->name('admin.praktikum');
-    Route::get('/sesi-praktikum', function (){
-        return Inertia::render('SesiPraktikumAdmin');
+    Route::get('/preview-periode-praktikum', function (){
+        return Inertia::render('PraktikumPreviewAdmin');
+    });//->name('admin.praktikum');
+    Route::get('/register-sesi-praktikum', function (){
+        return Inertia::render('SesiPraktikumManageAdmin');
     });//->name('admin.sesiPraktikum');
-    Route::get('/periode-dosen', function (){
-        return Inertia::render('PeriodeDosenAdmin');
+    Route::get('/preview-sesi-praktikum', function (){
+        return Inertia::render('SesiPraktikumPreviewAdmin');
+    });//->name('admin.sesiPraktikum');
+    Route::get('/register-dosen-aktif', function (){
+        return Inertia::render('PeriodeDosenManageAdmin');
     });//->name('admin.periodeDosen');
-    Route::get('/periode-aslab', function (){
-        return Inertia::render('PeriodeAslabAdmin');
+    Route::get('/preview-dosen-aktif', function (){
+        return Inertia::render('PeriodeDosenPreviewAdmin');
+    });//->name('admin.periodeDosen');
+    Route::get('/register-aslab-aktif', function (){
+        return Inertia::render('PeriodeAslabManageAdmin');
     });//->name('admin.periodeAslab');
-    Route::get('/modul-dosen', function (){
-        return Inertia::render('ModulDosenAdmin');
+    Route::get('/preview-aslab-aktif', function (){
+        return Inertia::render('PeriodeAslabPreviewAdmin');
+    });//->name('admin.periodeAslab');
+    Route::get('/preview-modul-dosen', function (){
+        return Inertia::render('ModulDosenPreviewAdmin');
     });//->name('admin.modulDosen');
-    Route::get('/modul-aslab', function (){
-        return Inertia::render('ModulAslabAdmin');
+    Route::get('/register-modul-dosen', function (){
+        return Inertia::render('ModulDosenRegisterAdmin');
+    });//->name('admin.modulDosen');
+    Route::get('/preview-modul-aslab', function (){
+        return Inertia::render('ModulAslabPreviewAdmin');
     });//->name('admin.modulAslab');
-    Route::get('/penilaian-dosen', function (){
-        return Inertia::render('PenilaianDosenAdmin');
-    });//->name('admin.penilaianDosen');
-    Route::get('/penilaian-aslab', function (){
-        return Inertia::render('PenilaianAslabAdmin');
-    });//->name('admin.penilaianAslab');
-    Route::get('/manage-materi', function (){
-        return Inertia::render('ManageMateriAdmin');
+    Route::get('/register-modul-aslab', function (){
+        return Inertia::render('ModulAslabRegisterAdmin');
+    });//->name('admin.modulAslab');
+    // Route::get('/penilaian-dosen', function (){
+    //     return Inertia::render('PenilaianDosenAdmin');
+    // });//->name('admin.penilaianDosen');
+    // Route::get('/penilaian-aslab', function (){
+    //     return Inertia::render('PenilaianAslabAdmin');
+    // });//->name('admin.penilaianAslab');
+    Route::get('/preview-materi', function (){
+        return Inertia::render('ManageMateriPreviewAdmin');
     });//->name('admin.manageMateri');
-    Route::get('/manage-pelanggaran', function (){
-        return Inertia::render('ManagePelanggaranAdmin');
+    Route::get('/register-materi', function (){
+        return Inertia::render('ManageMateriRegisterAdmin');
+    });//->name('admin.manageMateri');
+    Route::get('/preview-pelanggaran', function (){
+        return Inertia::render('ManagePelanggaranPreviewAdmin');
+    });//->name('admin.pelanggaran');
+    Route::get('/register-pelanggaran', function (){
+        return Inertia::render('ManagePelanggaranRegisterAdmin');
     });//->name('admin.pelanggaran');
     Route::get('/list-praktikan', function (){
         return Inertia::render('ListPraktikanAdmin');
