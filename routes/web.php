@@ -73,17 +73,29 @@ Route::middleware('guest')->group(function (){
     Route::get('/register-aslab', function (){
         return Inertia::render('ManageAslabRegisterAdmin');
     });//->name('admin.manageDosen');
-    Route::get('/praktikum', function (){
-        return Inertia::render('PraktikumAdmin');
+    Route::get('/register-periode-praktikum', function (){
+        return Inertia::render('PraktikumManageAdmin');
     });//->name('admin.praktikum');
-    Route::get('/sesi-praktikum', function (){
-        return Inertia::render('SesiPraktikumAdmin');
+    Route::get('/preview-periode-praktikum', function (){
+        return Inertia::render('PraktikumPreviewAdmin');
+    });//->name('admin.praktikum');
+    Route::get('/register-sesi-praktikum', function (){
+        return Inertia::render('SesiPraktikumManageAdmin');
     });//->name('admin.sesiPraktikum');
-    Route::get('/periode-dosen', function (){
-        return Inertia::render('PeriodeDosenAdmin');
+    Route::get('/preview-sesi-praktikum', function (){
+        return Inertia::render('SesiPraktikumPreviewAdmin');
+    });//->name('admin.sesiPraktikum');
+    Route::get('/register-dosen-aktif', function (){
+        return Inertia::render('PeriodeDosenManageAdmin');
     });//->name('admin.periodeDosen');
-    Route::get('/periode-aslab', function (){
-        return Inertia::render('PeriodeAslabAdmin');
+    Route::get('/preview-dosen-aktif', function (){
+        return Inertia::render('PeriodeDosenPreviewAdmin');
+    });//->name('admin.periodeDosen');
+    Route::get('/register-aslab-aktif', function (){
+        return Inertia::render('PeriodeAslabManageAdmin');
+    });//->name('admin.periodeAslab');
+    Route::get('/preview-aslab-aktif', function (){
+        return Inertia::render('PeriodeAslabPreviewAdmin');
     });//->name('admin.periodeAslab');
     Route::get('/preview-modul-dosen', function (){
         return Inertia::render('ModulDosenPreviewAdmin');
@@ -97,12 +109,12 @@ Route::middleware('guest')->group(function (){
     Route::get('/register-modul-aslab', function (){
         return Inertia::render('ModulAslabRegisterAdmin');
     });//->name('admin.modulAslab');
-    Route::get('/penilaian-dosen', function (){
-        return Inertia::render('PenilaianDosenAdmin');
-    });//->name('admin.penilaianDosen');
-    Route::get('/penilaian-aslab', function (){
-        return Inertia::render('PenilaianAslabAdmin');
-    });//->name('admin.penilaianAslab');
+    // Route::get('/penilaian-dosen', function (){
+    //     return Inertia::render('PenilaianDosenAdmin');
+    // });//->name('admin.penilaianDosen');
+    // Route::get('/penilaian-aslab', function (){
+    //     return Inertia::render('PenilaianAslabAdmin');
+    // });//->name('admin.penilaianAslab');
     Route::get('/preview-materi', function (){
         return Inertia::render('ManageMateriPreviewAdmin');
     });//->name('admin.manageMateri');

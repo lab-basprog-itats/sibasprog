@@ -3,19 +3,9 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 import HeaderAdmin from "../components/HeaderAdmin";
 import FooterAdmin from "../components/FooterAdmin";
 import SidebarAdmin from "../components/SidebarAdmin";
+import MenuAdmin from "../components/MenuAdmin";
 
 const ModulDosenRegisterAdmin = () => {
-    const adminMenuOptions = [
-        "Dashboard",
-        "Management User",
-        "Management Praktikum",
-        "Management Modul",
-        "Management Materi",
-        "Management Penilaian",
-        "Management Pelanggaran",
-        "Praktikan",
-    ];
-
     const praktikums = [
         { id: 1, modul: "1 Modul" },
         { id: 2, modul: "2 Modul" },
@@ -35,7 +25,7 @@ const ModulDosenRegisterAdmin = () => {
 
     return (
         <div className="flex flex-col md:flex-row">
-            <SidebarAdmin menuOptions={adminMenuOptions} />
+            <SidebarAdmin menuOptions={MenuAdmin.adminMenuOptions} />
             <div className="flex-grow text-blue-700">
                 <HeaderAdmin>
                     <div className="flex flex-row mb-1">
@@ -61,7 +51,7 @@ const ModulDosenRegisterAdmin = () => {
                                     htmlFor="praktikum"
                                     className="block text-gray-700 text-sm font-bold mb-2"
                                 >
-                                    Prakitkum
+                                    Praktikum
                                 </label>
                                 <input
                                     type="text"

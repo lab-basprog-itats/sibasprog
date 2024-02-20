@@ -3,22 +3,12 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 import HeaderAdmin from "../components/HeaderAdmin";
 import FooterAdmin from "../components/FooterAdmin";
 import SidebarAdmin from "../components/SidebarAdmin";
+import MenuAdmin from "../components/MenuAdmin";
 
 const ManageAslabRegisterAdmin = () => {
-    const adminMenuOptions = [
-        "Dashboard",
-        "Management User",
-        "Management Praktikum",
-        "Management Modul",
-        "Management Materi",
-        "Management Penilaian",
-        "Management Pelanggaran",
-        "Praktikan",
-    ];
-
     return (
         <div className="flex flex-col md:flex-row">
-            <SidebarAdmin menuOptions={adminMenuOptions} />
+            <SidebarAdmin menuOptions={MenuAdmin.adminMenuOptions} />
             <div className="flex-grow text-blue-700">
                 <HeaderAdmin>
                     <div className="flex flex-row mb-1">
