@@ -1,11 +1,19 @@
-import React from 'react'
-import {createRoot} from 'react-dom/client'
-import {createInertiaApp } from '@inertiajs/inertia-react'
-import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { createInertiaApp } from '@inertiajs/react';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+
+const appName = import.meta.env.VITE_APP_NAME || 'Sibasprog';
 
 createInertiaApp({
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`,import.meta.glob('./Pages/**/*.jsx')),
+    title: title => `${appName} ${title ? '- ' + title : ''}`,
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
     setup({ el, App, props }) {
-        createRoot(el).render(<App {...props} />)
+        const root = createRoot(el);
+
+        root.render(<App {...props} />);
     },
-})
+    progress: {
+        color: '#000000',
+    },
+});
