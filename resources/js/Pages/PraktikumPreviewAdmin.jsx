@@ -1,10 +1,10 @@
 import React from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
-import HeaderAdmin from "../components/HeaderAdmin";
-import FooterAdmin from "../components/FooterAdmin";
-import SidebarAdmin from "../components/SidebarAdmin";
-import MenuAdmin from "../components/MenuAdmin";
-// import DataStaticAdmin from "../components/DataStaticAdmin";
+import HeaderAdmin from "../Components/HeaderAdmin";
+import FooterAdmin from "../Components/FooterAdmin";
+import SidebarAdmin from "../Components/SidebarAdmin";
+import MenuAdmin from "../Components/MenuAdmin";
+// import DataStaticAdmin from "../Components/DataStaticAdmin";
 
 const PraktikumPreviewAdmin = () => {
     const data = [
