@@ -1,8 +1,6 @@
 <?php
 
-// use App\Http\Controllers\AslabController;
 use App\Models\Aslab;
-// use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -54,11 +52,11 @@ Route::get('/tests', function (){
  */
 Route::middleware('guest')->group(function (){
     Route::get('/shadow', function (){
-        return Inertia::render('LoginAdmin');
+        return Inertia::render('DashboardAdmin');
     });
     Route::get('/login-admin', function (){
         return Inertia::render('LoginAdmin');
-    })->name('admin.login');
+    });
     Route::get('/login-aslab', function (){
         return Inertia::render('LoginAslab');
     })->name('aslab.login');
