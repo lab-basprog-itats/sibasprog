@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Aslab;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class AslabController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() 
+    public function index()
     {
-        return Inertia::render('LoginAslab');
+        return Inertia::render('LoginAdmin');
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +34,7 @@ class AslabController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Aslab $aslab)
+    public function show(Admin $admin)
     {
         //
     }
@@ -42,7 +42,7 @@ class AslabController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Aslab $aslab)
+    public function edit(Admin $Admin)
     {
         //
     }
@@ -50,7 +50,7 @@ class AslabController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Aslab $aslab)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -58,7 +58,7 @@ class AslabController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Aslab $aslab)
+    public function destroy(Admin $admin)
     {
         //
     }
